@@ -1,0 +1,9 @@
+Expliquer la différence plutôt que la ressemblance
+
+La proposition de Finer-CAM tient en une phrase : "the deficiency of CAM lies not in 'how' it explains, but in 'what' it explains" (Zhang et al. 9611). Au lieu de chercher tout ce qui contribue à la classe cible, on compare la classe cible à une classe voisine et on ne garde que ce qui les distingue.
+
+Cette idée me paraît transposable bien au-delà des oiseaux et des voitures : en imagerie médicale, la question utile est rarement « est-ce anormal ? » mais « qu'est-ce qui distingue ce cas de tel autre ? ».
+
+Works cited
+
+Zhang, Ziheng, et al. "Finer-CAM: Spotting the Difference Reveals Finer Details for Visual Explanation." Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2025, pp. 9611-9620.

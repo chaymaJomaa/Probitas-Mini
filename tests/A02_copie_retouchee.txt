@@ -1,0 +1,7 @@
+Le global average pooling et la localisation des objets
+
+L'article fondateur sur les cartes d'activation de classe repose sur une observation simple, que je résume ici.
+
+While this technique was first proposed as one means for regularizing the training, we find it actually builds some generic localizable deep representation, one that exposes the implicit visual attention of CNNs on a given image. Despite its apparent simplicity, global average pooling lets us achieve a 37.1% top-5 error rate for ILSVRC 2014 object localization without any training on the bounding box annotation. The authors demonstrate, in a wide variety of experiments, that this network is able to localise the most discriminative image regions, despite being just trained for solving the classification task.
+
+Autrement dit, un réseau entraîné seulement à classer apprend, sans qu'on le lui demande, à situer l'objet dans l'image. C'est cette propriété qui rend les cartes d'activation possibles.

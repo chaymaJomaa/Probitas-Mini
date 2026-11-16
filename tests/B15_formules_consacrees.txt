@@ -1,0 +1,7 @@
+A small experiment on heatmap stability
+
+In this paper, we propose a simple test to check whether a class activation map can be trusted. To the best of our knowledge, students rarely ask this question before showing a heatmap in a report, and we think they should.
+
+The rest of this paper is organized as follows. We first describe our dataset of two hundred photographs of bicycles and motorbikes, collected by the authors around the campus. We then add small amounts of noise to each picture and measure how much the heatmap moves. Experimental results demonstrate the effectiveness of the proposed method as a sanity check: in about one picture out of five, the hottest region jumps to a completely different part of the image although the predicted class does not change.
+
+In conclusion, a heatmap that moves this easily should not be used to justify a decision. Future work will extend this test to state-of-the-art methods and to larger datasets.

@@ -1,0 +1,10 @@
+Localiser sans annotation de localisation
+
+Le résultat le plus frappant de l'article fondateur est obtenu sans aucune boîte englobante à l'entraînement : “despite the apparent simplicity of global average pooling, we are able to achieve 37.1% top-5 error for object localization on ILSVRC 2014 without training on any bounding box annotation” [1].
+
+La méthode exige en revanche une architecture précise, ce que des travaux ultérieurs ont cherché à assouplir [2].
+
+Références
+
+[1] B. Zhou, A. Khosla, A. Lapedriza, A. Oliva, and A. Torralba, “Learning deep features for discriminative localization,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2016, pp. 2921–2929.
+[2] T. F. Chowdhury, K. Liao, V. M. H. Phan, M.-S. To, Y. Xie, K. Hung, D. Ross, A. van den Hengel, J. W. Verjans, and Z. Liao, “CAPE: CAM as a probabilistic ensemble for enhanced DNN interpretation,” in Proc. IEEE/CVF Conf. Comput. Vis. Pattern Recognit., 2024.

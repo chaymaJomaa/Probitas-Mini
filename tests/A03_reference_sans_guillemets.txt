@@ -1,0 +1,9 @@
+Des explications fragiles
+
+Les explications produites par les méthodes d'importance des caractéristiques ne sont pas aussi solides qu'on le croit. In this paper, we demonstrate how to generate adversarial perturbations that produce perceptively indistinguishable inputs that are assigned the same predicted label, yet have very different interpretations. In all cases, our experiments show that systematic perturbations can lead to dramatically different interpretations without changing the label (Ghorbani et al., 2019).
+
+Ce résultat est inquiétant pour un usage médical : si deux images identiques à l'œil produisent deux cartes différentes, le médecin ne peut plus se fier à la carte pour comprendre la décision.
+
+Bibliographie
+
+Ghorbani, A., Abid, A., & Zou, J. (2019). Interpretation of neural networks is fragile. In Proceedings of the AAAI Conference on Artificial Intelligence, 33(1), 3681–3688.

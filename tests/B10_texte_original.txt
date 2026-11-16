@@ -1,0 +1,11 @@
+Pourquoi vouloir expliquer un réseau de neurones
+
+Un réseau de neurones convolutif prend une image et rend une étiquette, sans dire ce qui a guidé son choix. Tant que l'enjeu est de trier des photos de vacances, ce silence ne gêne personne. Dès que la décision concerne un patient ou un conducteur, il devient inacceptable : on veut savoir sur quoi le modèle s'est appuyé, ne serait-ce que pour repérer ses erreurs.
+
+Les cartes d'activation de classe répondent à cette demande de la manière la plus simple possible. L'idée, introduite par Zhou et ses collègues, consiste à reprendre les cartes de caractéristiques de la dernière couche de convolution et à les combiner avec les poids de la classe choisie (Zhou et al., 2016). On obtient une image de chaleur, superposée à la photo, qui désigne les zones ayant pesé dans la décision.
+
+Cette simplicité a un prix. La carte dit où le modèle a regardé, pas ce qui a pesé dans cette zone ni si elle aurait suffi seule. Elle peut aussi être trompeuse : un modèle qui reconnaît un cheval grâce au cavalier produira une carte parfaitement nette, centrée sur un indice qui n'a rien à voir avec l'animal. Pour cette raison, je considère la carte comme un point de départ pour poser des questions au modèle, jamais comme une réponse.
+
+Bibliographie
+
+Zhou, B., Khosla, A., Lapedriza, A., Oliva, A., & Torralba, A. (2016). Learning deep features for discriminative localization. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (pp. 2921–2929).

@@ -1,0 +1,10 @@
+Deux normes dans le même devoir
+
+La première limite des cartes d'activation est leur caractère relatif : « the CAM explanation only offers relative attention information » (Chowdhury et al., 2024, p. 1). La seconde est leur fragilité : « systematic perturbations can lead to dramatically different interpretations without changing the label » [2].
+
+Les deux citations sont correctes, mais l'une suit la norme auteur-date et l'autre la norme numérique. Un lecteur s'y perd, et un jury le remarque.
+
+Bibliographie
+
+Chowdhury, T. F., Liao, K., Phan, V. M. H., To, M.-S., Xie, Y., Hung, K., Ross, D., van den Hengel, A., Verjans, J. W., & Liao, Z. (2024). CAPE: CAM as a probabilistic ensemble for enhanced DNN interpretation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition.
+Ghorbani, A., Abid, A., & Zou, J. (2019). Interpretation of neural networks is fragile. In Proceedings of the AAAI Conference on Artificial Intelligence, 33(1), 3681–3688.

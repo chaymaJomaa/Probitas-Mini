@@ -1,0 +1,9 @@
+La localisation comme effet secondaire
+
+Le point de départ de toute la famille des cartes d'activation est une observation sur le global average pooling. Zhou et al. (2016, p. 1) write that “while this technique was previously proposed as a means for regularizing training, we find that it actually builds a generic localizable deep representation that exposes the implicit attention of CNNs on an image”.
+
+La localisation n'est donc pas apprise : elle apparaît comme un effet secondaire de la classification, ce qui explique que la méthode ne demande aucune annotation supplémentaire.
+
+Références
+
+Zhou, B., Khosla, A., Lapedriza, A., Oliva, A. and Torralba, A. (2016) 'Learning deep features for discriminative localization', Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pp. 2921-2929.

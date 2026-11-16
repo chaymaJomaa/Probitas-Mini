@@ -1,0 +1,10 @@
+﻿DNN interpretability is an emerging and actively stud-
+ied research field. For visual classification tasks, a com-
+mon type of DNN interpretability analysis is to explain
+DNN outputs via finding and displaying model attention
+on the input image, i.e., identifying which image regions
+the model focused on during the decision-making process.
+This type of visual explanation can be achieved via methods
+of gradient-based attention visualization [25], perturbation-
+based input manipulation [6, 21], and class activation map
+(CAM)-based visualization [

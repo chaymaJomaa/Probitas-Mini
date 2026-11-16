@@ -1,0 +1,1 @@
+Sujet du devoir : Présentez le principe des cartes d'activation de classe (CAM) pour expliquer les décisions d'un réseau de neurones convolutif, puis discutez leurs limites à partir des quatre articles distribués en cours. Les emprunts textuels seront mis entre guillemets et suivis d'un appel de référence ; toute source utilisée figurera dans la bibliographie.

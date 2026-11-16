@@ -1,0 +1,7 @@
+Expliquer les décisions d'un réseau de neurones : l'approche CAPE
+
+Dans ce devoir, je présente une méthode récente d'explication visuelle des réseaux de neurones, puis j'en discute les apports pour un utilisateur non spécialiste.
+
+Deep Neural Networks (DNNs) are widely used for visual classification tasks, but their complex computation process and black-box nature hinder decision transparency and interpretability. Class activation maps (CAMs) and recent variants provide ways to visually explain the DNN decision-making process by displaying 'attention' heatmaps of the DNNs. Nevertheless, the CAM explanation only offers relative attention information, that is, on an attention heatmap, we can interpret which image region is more or less important than the others. However, these regions cannot be meaningfully compared across classes, and the contribution of each region to the model's class prediction is not revealed.
+
+Cette limite est précisément celle que la méthode cherche à dépasser, en donnant à chaque région une contribution comparable d'une classe à l'autre. C'est ce point que je trouve le plus utile pour un médecin qui doit lire la carte produite par le modèle.

@@ -1,0 +1,9 @@
+Ce que CAPE reproche aux cartes classiques
+
+Les auteurs de CAPE partent d'un constat sur les cartes d'activation : « the CAM explanation only offers relative attention information » (Chowdhury et al., 2024, p. 1). Ils en tirent la conséquence suivante : « these regions cannot be meaningfully compared across classes, and the contribution of each region to the model's class prediction is not revealed » (ibid., p. 1).
+
+Le reproche est donc double : pas de comparaison possible entre classes, et pas de mesure de la contribution de chaque région. La méthode proposée répond aux deux en donnant aux régions une interprétation probabiliste.
+
+Bibliographie
+
+Chowdhury, T. F., Liao, K., Phan, V. M. H., To, M.-S., Xie, Y., Hung, K., Ross, D., van den Hengel, A., Verjans, J. W., & Liao, Z. (2024). CAPE: CAM as a probabilistic ensemble for enhanced DNN interpretation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition.

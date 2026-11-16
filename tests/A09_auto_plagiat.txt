@@ -1,0 +1,7 @@
+Ce que les cartes de chaleur nous apprennent sur les données
+
+Avant de lire les quatre articles, j'avais déjà manipulé des cartes d'activation lors d'un TP, et je repars de cette expérience.
+
+Le résultat nous a surpris. Sur la plupart des photos de chiens, la zone la plus chaude n'était pas le museau mais le collier ou la laisse. Le réseau avait appris un raccourci : dans notre jeu de données, presque tous les chiens portaient un collier et presque aucun chat. La carte de chaleur ne nous disait donc pas seulement où le réseau regarde, elle nous révélait un biais du jeu de données que nous n'aurions jamais vu dans la seule courbe de précision.
+
+Les articles confirment cette intuition à plus grande échelle : la carte est un outil de diagnostic du modèle autant que du jeu de données.

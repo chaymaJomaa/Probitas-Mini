@@ -1,0 +1,9 @@
+Une propriété inattendue du global average pooling
+
+Comme l'écrivent Ghorbani et ses collègues, « this technique was previously proposed as a means for regularizing training, we find that it actually builds a generic localizable deep representation that exposes the implicit attention of CNNs on an image » (Ghorbani et al., 2019).
+
+Cette observation est à l'origine de toute la famille des cartes d'activation de classe : la localisation n'est pas apprise, elle apparaît comme un effet secondaire de la classification.
+
+Bibliographie
+
+Ghorbani, A., Abid, A., & Zou, J. (2019). Interpretation of neural networks is fragile. In Proceedings of the AAAI Conference on Artificial Intelligence, 33(1), 3681–3688.

@@ -1,0 +1,7 @@
+Vocabulaire du domaine
+
+Le vocabulaire de ce domaine est presque entièrement anglais, et il est impossible de le traduire sans perdre le lecteur. Je l'emploie donc tel quel.
+
+Un convolutional neural network (CNN) produit, dans ses dernières couches, des feature maps dont chaque canal réagit à un motif. Lorsque le réseau se termine par une couche de global average pooling suivie d'une couche linéaire, les poids de cette couche linéaire permettent de construire une class activation map (CAM) pour la classe prédite. Des variantes comme Grad-CAM utilisent les gradients à la place des poids, ce qui les rend applicables à presque toutes les architectures. Les jeux de données de référence sont ImageNet pour la classification générale et CUB-200 pour la fine-grained classification, c'est-à-dire la distinction entre classes très proches comme deux espèces d'oiseaux. On évalue souvent ces méthodes par le top-5 error de localisation et par des tests de deletion et insertion, qui mesurent la chute de confiance du modèle quand on masque les pixels désignés par la carte.
+
+Ces termes reviennent dans les quatre articles ; ils ne sont la propriété de personne, et aucun outil ne devrait les compter comme des emprunts.

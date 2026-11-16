@@ -1,0 +1,7 @@
+Les limites de CAM sur les classes proches
+
+Quand deux classes se ressemblent beaucoup (deux espèces d'oiseaux, deux modèles de voitures), la carte d'activation classique éclaire les mêmes zones pour l'une et pour l'autre.
+
+Selon les auteurs d'une méthode récente, « CAM often struggles to identify discriminative regions that distinguish visually similar fine-grained classes. Prior efforts address this limitation by introducing more sophisticated explanation processes, but at the cost of extra complexity. »
+
+Je retiens de cette remarque que le problème n'est pas la qualité de la carte, mais la question qu'on lui pose : on lui demande pourquoi c'est un oiseau, pas pourquoi c'est cet oiseau-là plutôt qu'un autre.

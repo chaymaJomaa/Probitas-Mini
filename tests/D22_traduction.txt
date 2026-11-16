@@ -1,0 +1,5 @@
+Résumé de l'article CAPE
+
+Les réseaux de neurones profonds sont largement utilisés pour les tâches de classification visuelle, mais la complexité de leur calcul et leur nature de boîte noire font obstacle à la transparence et à l'interprétabilité des décisions. Les cartes d'activation de classe et leurs variantes récentes offrent des moyens d'expliquer visuellement le processus de décision du réseau en affichant des cartes de chaleur d'attention. Néanmoins, l'explication fournie par CAM n'apporte qu'une information d'attention relative : sur une carte de chaleur, on peut interpréter quelle région de l'image est plus ou moins importante que les autres. Cependant, ces régions ne peuvent pas être comparées de manière significative d'une classe à l'autre, et la contribution de chaque région à la prédiction du modèle n'est pas révélée.
+
+Ce résumé est une traduction mot à mot de l'abstract de l'article, sans guillemets ni référence.

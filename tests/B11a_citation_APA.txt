@@ -1,0 +1,9 @@
+Une limite des cartes d'activation classiques
+
+Les cartes d'activation donnent une information relative, et c'est là leur principale faiblesse. Les auteurs de CAPE la formulent ainsi : « these regions cannot be meaningfully compared across classes, and the contribution of each region to the model's class prediction is not revealed » (Chowdhury et al., 2024, p. 1).
+
+Autrement dit, on sait qu'une zone compte plus qu'une autre pour la classe choisie, mais on ne sait pas de combien, ni si elle compterait autant pour une autre classe. C'est cette comparaison entre classes que la méthode cherche à rendre possible.
+
+Bibliographie
+
+Chowdhury, T. F., Liao, K., Phan, V. M. H., To, M.-S., Xie, Y., Hung, K., Ross, D., van den Hengel, A., Verjans, J. W., & Liao, Z. (2024). CAPE: CAM as a probabilistic ensemble for enhanced DNN interpretation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition.

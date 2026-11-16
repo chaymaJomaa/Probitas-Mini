@@ -1,0 +1,1 @@
+﻿La détection de plagiat repose sur la comparaison de passages entre plusieurs documents et sur la recherche de séquences identiques.

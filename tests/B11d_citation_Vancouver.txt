@@ -1,0 +1,9 @@
+La robustesse des explications
+
+Une explication n'a de valeur que si elle est stable. Or, pour les méthodes fondées sur l'importance des caractéristiques, ce n'est pas le cas : « systematic perturbations can lead to dramatically different interpretations without changing the label » [1].
+
+Deux images que l'œil ne distingue pas peuvent donc recevoir la même étiquette et deux cartes différentes. Pour un usage clinique, cela signifie qu'une carte isolée ne devrait jamais servir de justification.
+
+Références
+
+1. Ghorbani A, Abid A, Zou J. Interpretation of neural networks is fragile. In: Proceedings of the AAAI Conference on Artificial Intelligence; 2019. p. 3681-8.

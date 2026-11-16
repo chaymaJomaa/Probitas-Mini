@@ -1,0 +1,9 @@
+Des cartes d'activation aux gradients
+
+La carte d'activation de classe d'origine exige une architecture précise : une couche de global average pooling juste avant la couche de classification (Zhou et al., 2016). Cette contrainte a vite paru trop forte pour les réseaux déjà entraînés.
+
+Une extension connue, Grad-CAM, généralise l'idée à n'importe quelle architecture en utilisant les gradients de la classe par rapport aux cartes de caractéristiques (Selvaraju et al., 2017). Dans mes propres essais sur un petit réseau, les deux méthodes donnent des cartes très proches, ce qui me rassure sur la robustesse de l'idée de départ.
+
+Bibliographie
+
+Zhou, B., Khosla, A., Lapedriza, A., Oliva, A., & Torralba, A. (2016). Learning deep features for discriminative localization. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (pp. 2921–2929).

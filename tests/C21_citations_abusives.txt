@@ -1,0 +1,10 @@
+Un collage de citations
+
+Les auteurs de CAPE constatent que « the CAM explanation only offers relative attention information, that is, on an attention heatmap, we can interpret which image region is more or less important than the others » (Chowdhury et al., 2024, p. 1). Ils ajoutent que « these regions cannot be meaningfully compared across classes, and the contribution of each region to the model's class prediction is not revealed » (Chowdhury et al., 2024, p. 1). De leur côté, Zhang et ses collègues observent que « CAM often struggles to identify discriminative regions that distinguish visually similar fine-grained classes » (Zhang et al., 2025, p. 9611).
+
+Toutes ces citations sont correctes, mais le devoir ne contient presque rien d'autre.
+
+Bibliographie
+
+Chowdhury, T. F., Liao, K., Phan, V. M. H., To, M.-S., Xie, Y., Hung, K., Ross, D., van den Hengel, A., Verjans, J. W., & Liao, Z. (2024). CAPE: CAM as a probabilistic ensemble for enhanced DNN interpretation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition.
+Zhang, Z., Gu, J., Chowdhury, A., Mai, Z., Carlyn, D., Berger-Wolf, T., Su, Y., & Chao, W.-L. (2025). Finer-CAM: Spotting the difference reveals finer details for visual explanation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (pp. 9611–9620).

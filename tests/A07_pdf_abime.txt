@@ -1,0 +1,10 @@
+Ce que révèle le global average pooling
+
+Voici, tel que je l'ai copié depuis le lecteur PDF, le passage qui m'a paru le plus important.
+
+While this technique was previously proposed as a means for regularizing training, we nd that it actu-
+ally builds a generic localizable deep representation that exposes the implicit attention of CNNs on an image. 2921 Despite the apparent simplicity of global average pooling, we are able to achieve 37.1% top-5 error for object localization on ILSVRC 2014 without training on any bounding box anno-
+tation. We demonstrate in a variety of experiments that our net-
+work is able to localize the discriminative image regions despite just being trained for solving classi cation task.
+
+Ce passage montre que la localisation est un effet secondaire de la classification.

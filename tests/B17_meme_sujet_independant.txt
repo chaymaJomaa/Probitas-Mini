@@ -1,0 +1,7 @@
+Why similar classes confuse activation maps
+
+Activation maps work well when the classes are far apart. A dog and a bicycle share almost nothing, so the regions that support one class are useless for the other, and the map for the predicted class is clean. The trouble starts with classes that look alike. Two species of sparrows share the same body, the same beak and the same posture; the only clues that separate them are a stripe above the eye or a slightly different shade of brown.
+
+When the map is asked why the picture is a sparrow of species A, it answers with everything that looks like a sparrow, because all those features do raise the score of species A. The stripe that actually made the difference is lost in a large warm blob covering the whole bird. The map is not wrong, it is answering a question that is too broad.
+
+A better question is comparative: what makes this bird an A rather than a B? Answering it means looking at the two classes together and keeping only the evidence that favours one over the other. Several recent papers follow this path, with different tools but the same intuition, and their maps are indeed much sharper on fine-grained datasets. The price is that the user has to choose a comparison class, which is not always obvious.

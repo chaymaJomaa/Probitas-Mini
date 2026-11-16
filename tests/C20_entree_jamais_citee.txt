@@ -1,0 +1,12 @@
+Une bibliographie plus longue que le texte
+
+Je ne m'appuie, dans ce court devoir, que sur l'article fondateur : la carte d'activation combine les cartes de caractéristiques de la dernière couche avec les poids de la classe prédite, et cette combinaison suffit à localiser l'objet sans annotation de position (Zhou et al., 2016).
+
+Cette simplicité explique le succès de la méthode, mais aussi ses limites : elle impose une architecture précise et ne dit rien de la stabilité de la carte.
+
+Bibliographie
+
+Chowdhury, T. F., Liao, K., Phan, V. M. H., To, M.-S., Xie, Y., Hung, K., Ross, D., van den Hengel, A., Verjans, J. W., & Liao, Z. (2024). CAPE: CAM as a probabilistic ensemble for enhanced DNN interpretation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition.
+Ghorbani, A., Abid, A., & Zou, J. (2019). Interpretation of neural networks is fragile. In Proceedings of the AAAI Conference on Artificial Intelligence, 33(1), 3681–3688.
+Zhang, Z., Gu, J., Chowdhury, A., Mai, Z., Carlyn, D., Berger-Wolf, T., Su, Y., & Chao, W.-L. (2025). Finer-CAM: Spotting the difference reveals finer details for visual explanation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (pp. 9611–9620).
+Zhou, B., Khosla, A., Lapedriza, A., Oliva, A., & Torralba, A. (2016). Learning deep features for discriminative localization. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (pp. 2921–2929).

@@ -1,0 +1,5 @@
+Une idée reprise sans ses mots
+
+On peut tromper une carte d'explication sans tromper le classifieur. Il suffit de modifier quelques pixels d'une photo, si peu que personne ne voit la différence : l'étiquette prédite reste la même, mais la carte qui désigne les pixels importants se déplace vers une tout autre zone de l'image. Les auteurs construisent ces modifications volontairement, et montrent que le phénomène touche toutes les grandes familles de méthodes, y compris celles qui expliquent une décision par des exemples d'entraînement. Leur explication passe par la courbure de la fonction apprise : là où elle est forte, un pas minuscule dans l'image suffit à faire basculer l'explication.
+
+Cette idée est empruntée à un article précis, dont ni le nom ni l'année n'apparaissent ici : c'est un plagiat d'idée, et aucune comparaison de mots ne peut le voir.

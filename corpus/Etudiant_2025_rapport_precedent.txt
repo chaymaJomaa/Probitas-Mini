@@ -1,0 +1,7 @@
+Rapport de TP : visualiser ce que regarde un réseau de neurones
+
+Dans ce TP, nous avons entraîné un petit réseau convolutif à distinguer des photos de chats et de chiens, puis nous avons essayé de comprendre sur quelles zones de l'image il appuie sa décision. Pour cela, nous avons calculé une CAM : les sorties de la dernière convolution, pondérées par les poids du neurone de la classe gagnante, donnent une image de chaleur que l'on superpose à la photo d'origine.
+
+Le résultat nous a surpris. Sur la plupart des photos de chiens, la zone la plus chaude n'était pas le museau mais le collier ou la laisse. Le réseau avait appris un raccourci : dans notre jeu de données, presque tous les chiens portaient un collier et presque aucun chat. La carte de chaleur ne nous disait donc pas seulement où le réseau regarde, elle nous révélait un biais du jeu de données que nous n'aurions jamais vu dans la seule courbe de précision.
+
+Nous en tirons deux leçons. D'abord, une bonne précision ne garantit pas un bon raisonnement. Ensuite, une carte de chaleur est un outil de diagnostic, pas une preuve : elle indique une zone, elle n'explique pas pourquoi cette zone compte. Il faudrait, pour aller plus loin, comparer plusieurs méthodes de visualisation sur les mêmes images et vérifier qu'elles racontent la même histoire.

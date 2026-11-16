@@ -1,0 +1,9 @@
+Une citation presque correcte
+
+L'observation fondatrice est bien citée, mais avec une année erronée : « it actually builds a generic localizable deep representation that exposes the implicit attention of CNNs on an image » (Zhou et al., 2015).
+
+Le lecteur qui cherche l'article de 2015 ne le trouvera pas ; l'erreur n'est pas un plagiat, c'est une négligence, et c'est au relecteur de la signaler.
+
+Bibliographie
+
+Zhou, B., Khosla, A., Lapedriza, A., Oliva, A., & Torralba, A. (2016). Learning deep features for discriminative localization. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (pp. 2921–2929).

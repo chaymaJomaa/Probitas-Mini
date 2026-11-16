@@ -1,0 +1,13 @@
+Comparer pour expliquer
+
+L'idée centrale de Finer-CAM est de comparer la classe cible à une classe qui lui ressemble : « by explicitly comparing the target class with similar classes and spotting their differences, Finer-CAM suppresses features shared with other classes »¹.
+
+Cette comparaison revient à poser au modèle une question plus précise, et c'est la précision de la question qui rend la réponse lisible.
+
+Notes
+
+1. Zhang, Z. et al., Finer-CAM: Spotting the Difference Reveals Finer Details for Visual Explanation, CVPR 2025, p. 9611.
+
+Bibliographie
+
+Zhang, Z., Gu, J., Chowdhury, A., Mai, Z., Carlyn, D., Berger-Wolf, T., Su, Y., & Chao, W.-L. (2025). Finer-CAM: Spotting the difference reveals finer details for visual explanation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (pp. 9611–9620).

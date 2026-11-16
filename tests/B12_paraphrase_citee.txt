@@ -1,0 +1,9 @@
+Des explications que l'on peut manipuler
+
+Le travail de Ghorbani et ses collègues porte un coup sérieux à la confiance que l'on accorde aux cartes d'explication. Ces méthodes produisent, for example, feature importance maps, c'est-à-dire des cartes qui désignent les pixels ayant pesé dans la décision. In all the cases, their experiments show that such systematic perturbations can easily lead to dramatically different visual interpretations, without ever changing the label (Ghorbani et al., 2019).
+
+J'en retiens une règle pratique : avant de montrer une carte à un médecin, il faudrait vérifier qu'elle reste la même quand on perturbe légèrement l'image.
+
+Bibliographie
+
+Ghorbani, A., Abid, A., & Zou, J. (2019). Interpretation of neural networks is fragile. In Proceedings of the AAAI Conference on Artificial Intelligence, 33(1), 3681–3688.

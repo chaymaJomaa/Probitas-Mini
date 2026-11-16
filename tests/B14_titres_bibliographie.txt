@@ -1,0 +1,25 @@
+Expliquer les décisions d'un réseau de neurones convolutif
+Synthèse de lecture, licence 3
+
+Introduction
+
+Un classifieur d'images performant n'est pas pour autant un classifieur compréhensible. Les quatre articles lus pour ce devoir forment une histoire en quatre temps : une idée simple, un avertissement, puis deux tentatives pour poser au modèle une meilleure question.
+
+Une idée simple et son avertissement
+
+L'idée de départ est de réutiliser ce que le réseau a déjà appris : les cartes de caractéristiques de la dernière couche, combinées avec les poids de la classe, désignent les zones qui ont compté (Zhou et al., 2016). L'avertissement vient trois ans plus tard : ces cartes peuvent changer du tout au tout sous une perturbation invisible de l'image, sans que la classe prédite change (Ghorbani et al., 2019).
+
+Deux manières de poser une meilleure question
+
+La première consiste à donner aux régions une contribution comparable entre classes, en reformulant la carte comme un ensemble probabiliste (Chowdhury et al., 2024). La seconde consiste à comparer la classe cible à une classe voisine pour ne garder que ce qui les distingue (Zhang et al., 2025). Dans les deux cas, ce n'est pas la carte qui change, c'est la question.
+
+Conclusion
+
+Je retiens qu'une explication visuelle n'est jamais neutre : elle répond à la question qu'on lui a posée, et il faut donc commencer par choisir la bonne question.
+
+Bibliographie
+
+Chowdhury, T. F., Liao, K., Phan, V. M. H., To, M.-S., Xie, Y., Hung, K., Ross, D., van den Hengel, A., Verjans, J. W., & Liao, Z. (2024). CAPE: CAM as a probabilistic ensemble for enhanced DNN interpretation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition.
+Ghorbani, A., Abid, A., & Zou, J. (2019). Interpretation of neural networks is fragile. In Proceedings of the AAAI Conference on Artificial Intelligence, 33(1), 3681–3688.
+Zhang, Z., Gu, J., Chowdhury, A., Mai, Z., Carlyn, D., Berger-Wolf, T., Su, Y., & Chao, W.-L. (2025). Finer-CAM: Spotting the difference reveals finer details for visual explanation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (pp. 9611–9620).
+Zhou, B., Khosla, A., Lapedriza, A., Oliva, A., & Torralba, A. (2016). Learning deep features for discriminative localization. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (pp. 2921–2929).

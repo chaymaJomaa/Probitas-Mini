@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+{% block bandeau %}
+{% if not resultat %}
+<section class="bandeau">
+  <h1>Déposez une copie. Probitas montre d'où vient chaque phrase, et si elle est citée.</h1>
+  <p>Copie mot pour mot, copie retouchée, citation correcte, texte commun autorisé, style d'écriture, cohérence des références : chaque constat est surligné ou expliqué, avec sa source et un conseil.</p>
+</section>
+{% endif %}
+{% endblock %}
+{% block contenu %}
+
+<section class="carte">
+  <form method="post" enctype="multipart/form-data" class="formulaire" id="formulaire">
+    <div>
+      <label class="dropzone" for="fichier" id="dropzone">
+        <input type="file" id="fichier" name="fichier" accept=".txt,.md,.pdf,.docx">
+        <svg class="dropzone-icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4m0 0 4 4m-4-4-4 4"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>
+        <span class="dropzone-title">Glissez un fichier ici ou cliquez pour le choisir</span>
+        <span class="aide">txt, pdf, docx</span>
+        <span class="dropzone-file" id="dropzone-file" hidden></span>
+      </label>
+      <p class="titre" style="margin-top: 1rem">Sources comparées <span class="muted">(dossier <code>corpus/</code>)</span></p>
+      <div class="chips">
+        {% for n, _, commun in sources if not commun %}<span class="chip">{{ n }}</span>{% else %}<span class="aide">aucune : ajoutez des fichiers dans corpus/</span>{% endfor %}
+        {% for n, _, commun in sources if commun %}<span class="chip commun" title="texte commun autorisé (corpus/commun/)">{{ n }} · commun</span>{% endfor %}
+      </div>
+      <button type="submit" class="bouton" id="bouton">Analyser</button>
+      {% if erreur %}<p class="erreur" style="margin-top: .8rem">{{ erreur }}</p>{% endif %}
+    </div>
+    <div>
+      <label class="titre" for="texte">ou collez un texte</label>
+      <textarea id="texte" name="texte" placeholder="Collez ici le texte à vérifier…">{{ texte if resultat and nom == 'Texte collé' else '' }}</textarea>
+    </div>
+  </form>
+</section>
+
+{% if resultat %}
+{% set r = resultat %}
+{% set n = r.n_mots if r.n_mots else 1 %}
+<section class="carte verdict {{ niveau }}" id="resultat">
+  <p class="kicker">{{ nom }} · {{ r.n_mots }} mots jugés sur {{ r.n_mots_total }} · {{ passages|length }} passage{{ 's' if passages|length != 1 }}</p>
+  <h1>{{ verdict }}</h1>
+  <dl class="chiffres">
+    <div class="rose"><dt>Plagiat potentiel</dt><dd>{{ (r.plagiat_potentiel * 100) | round | int }} %</dd><dd class="note">reprises sans citation correcte</dd></div>
+    <div><dt>Similarité totale</dt><dd>{{ (r.similarite_totale * 100) | round | int }} %</dd><dd class="note">tout ce qui ressemble à une source, citations comprises</dd></div>
+    <div class="vert"><dt>Citations correctes</dt><dd>{{ (parts.vert / n * 100) | round | int }} %</dd><dd class="note">reconnues et exclues du taux</dd></div>
+    <div class="teal"><dt>Sources</dt><dd>{{ r.par_source|length }}<small>/{{ sources|length }}</small></dd><dd class="note">avec correspondance, sur celles comparées</dd></div>
+    <div class="or"><dt>Indice de style IA</dt><dd>{% if ia.indice is none %}–{% else %}{{ ia.indice }}<small>/100</small>{% endif %}</dd><dd class="note">{{ ia.niveau }} · indicateur, pas une preuve</dd></div>
+  </dl>
+  <div class="barre" aria-hidden="true">
+    {% for couleur in ['rose', 'jaune', 'vert'] %}{% if parts[couleur] %}<span class="seg-{{ couleur }}" style="flex-basis: {{ parts[couleur] / n * 100 }}%"></span>{% endif %}{% endfor %}
+  </div>
+  <ul class="legende" id="legende">
+    <li><button type="button" data-couleur="rose" aria-pressed="true"><i class="pastille rose"></i>copie non citée <b>{{ parts.rose }} mots</b></button></li>
+    <li><button type="button" data-couleur="jaune" aria-pressed="true"><i class="pastille jaune"></i>à vérifier <b>{{ parts.jaune }} mots</b></button></li>
+    <li><button type="button" data-couleur="vert" aria-pressed="true"><i class="pastille vert"></i>citation ou reformulation citée <b>{{ parts.vert }} mots</b></button></li>
+    <li><button type="button" data-couleur="gris" aria-pressed="true"><i class="pastille gris"></i>non jugé : titres, bibliographie, texte commun <b>{{ parts.gris }} mots</b></button></li>
+    <li class="muted">texte propre <b>{{ n - parts.rose - parts.jaune - parts.vert }} mots</b></li>
+  </ul>
+  {% if r.remarques %}<ul class="remarques">{% for rem in r.remarques %}<li>{{ rem }}</li>{% endfor %}</ul>{% endif %}
+  <div class="actions">
+    <button type="button" class="bouton-secondaire" onclick="window.print()">Imprimer ou enregistrer en PDF</button>
+    <a class="bouton-secondaire" href="#ia">Style d'écriture</a>
+    <a class="bouton-secondaire" href="#references">Références</a>
+    <a class="bouton-secondaire" href="#passages">Tableau des passages</a>
+    <span class="aide">Cliquez un passage surligné pour voir sa source et quoi en faire ; cliquez une couleur de la légende pour la masquer.</span>
+  </div>
+</section>
+
+<div class="deux-colonnes">
+  <section class="carte">
+    <h2>Copie annotée</h2>
+    <div class="texte" id="texte-annote">{{ texte_surligne | safe }}</div>
+  </section>
+  <aside class="panneau">
+    <section class="carte detail" id="detail">
+      <p class="detail-vide">{% if passages %}Cliquez un passage surligné dans la copie.{% else %}Aucune correspondance avec les sources comparées.{% endif %}</p>
+    </section>
+    <section class="carte sources">
+      <h2>Sources</h2>
+      {% if r.par_source %}
+      <table><tr><th>Part du texte</th><th>Fichier</th></tr>
+        {% for s in r.par_source %}<tr><td class="taux">{{ (s.taux * 100) | round | int }} %</td><td>{{ s.nom }}<br><span class="muted">{{ s.mots }} mots communs</span></td></tr>{% endfor %}
+      </table>
+      {% else %}<p class="aide">Aucune des {{ sources|length }} sources ne partage de passage avec ce texte.</p>{% endif %}
+    </section>
+  </aside>
+</div>
+
+<div class="deux-blocs">
+  <section class="carte" id="ia">
+    <h2>Style d'écriture : indice IA</h2>
+    {% if ia.indice is none %}
+      <p class="aide">{{ ia.fiabilite }}</p>
+    {% else %}
+      <div class="jauge" role="img" aria-label="Indice {{ ia.indice }} sur 100, niveau {{ ia.niveau }}">
+        <div class="jauge-bandes"><span class="bande-faible">faible</span><span class="bande-modere">modéré</span><span class="bande-eleve">élevé</span></div>
+        <div class="aiguille" style="left: {{ ia.indice }}%"><b>{{ ia.indice }}</b></div>
+      </div>
+      <p>Indice <b>{{ ia.indice }}/100</b>, niveau <b>{{ ia.niveau }}</b>. {{ ia.fiabilite }}</p>
+      <table class="mesures">
+        <thead><tr><th>Mesure</th><th>Valeur</th><th>Tendance</th></tr></thead>
+        <tbody>
+        {% for m in ia.mesures %}
+          <tr><td>{{ m.nom }}<span class="lecture">{{ m.lecture }}</span></td><td>{{ m.valeur }}</td><td class="tendance"><i style="--s: {{ m.score }}"></i>{{ m.tendance }}</td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    {% endif %}
+    <div class="avertissement">{{ ia.avertissement }}</div>
+  </section>
+
+  <section class="carte" id="references">
+    <h2>Cohérence des références</h2>
+    <ul class="refs-liste">
+      {% for rem in refs.remarques %}<li class="{{ 'refs-ok' if 'tout se correspond' in rem }}">{{ rem }}</li>{% endfor %}
+    </ul>
+    {% if refs.appels or refs.entrees %}
+    <table class="refs-tableau">
+      <thead><tr><th>Appels dans le texte ({{ refs.appels|length }}{% if refs.numeros %} + {{ refs.numeros|length }} numérotés{% endif %})</th><th>Entrées en bibliographie ({{ refs.entrees|length }})</th></tr></thead>
+      <tbody><tr>
+        <td>{% for a in refs.appels %}{{ a[2] }}{% if not loop.last %}<br>{% endif %}{% else %}<span class="muted">aucun</span>{% endfor %}{% if refs.numeros %}<br><span class="muted">[{{ refs.numeros|join('], [') }}]</span>{% endif %}</td>
+        <td>{% for e in refs.entrees %}{{ e[2] | truncate(70) }}{% if not loop.last %}<br>{% endif %}{% else %}<span class="muted">{% if refs.bibliographie %}aucune entrée reconnue{% else %}pas de section Bibliographie{% endif %}</span>{% endfor %}</td>
+      </tr></tbody>
+    </table>
+    {% endif %}
+    <p class="aide" style="margin-top: .8rem">Un appel (Auteur, année) doit avoir son entrée en bibliographie, et chaque entrée doit être appelée au moins une fois. La comparaison porte sur le nom du premier auteur et l'année.</p>
+  </section>
+</div>
+
+<section class="carte" id="passages">
+  <h2>Tous les passages ({{ passages|length }})</h2>
+  {% if passages %}
+  <table class="tableau">
+    <thead><tr><th class="num">N°</th><th>Catégorie</th><th>Passage</th><th>Comment il a été trouvé</th><th>Source</th><th></th></tr></thead>
+    <tbody>
+    {% for p in passages %}
+      <tr class="{{ p.couleur }}">
+        <td class="num">{{ p.id }}</td>
+        <td><i class="pastille {{ p.couleur }}"></i> {{ p.categorie }}<br><span class="muted">confiance {{ p.confiance }}</span></td>
+        <td><q>{{ p.texte | truncate(160) }}</q></td>
+        <td class="muted">{{ p.methode }}</td>
+        <td>{{ p.source }}</td>
+        <td><button type="button" class="lien voir" data-passage="{{ p.id }}">Voir</button></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}<p class="aide">Aucun passage.</p>{% endif %}
+</section>
+
+<template id="modele-detail">
+  <h3><i class="pastille"></i><span class="cat"></span></h3>
+  <p class="meta"></p>
+  <span class="etiquette">Dans la copie</span>
+  <blockquote class="passage"></blockquote>
+  <span class="etiquette source-etiquette">Dans la source</span>
+  <blockquote class="source-extrait"></blockquote>
+  <p class="explication"></p>
+  <p class="conseil"><b>Que faire : </b><span></span></p>
+  <nav><button type="button" class="lien" data-dir="-1">Passage précédent</button> · <span class="index"></span> · <button type="button" class="lien" data-dir="1">Passage suivant</button></nav>
+</template>
+<script id="donnees-passages" type="application/json">{{ passages | tojson }}</script>
+{% endif %}
+{% endblock %}
+{% block script %}
+<script>
+(function () {
+  var zone = document.getElementById("dropzone"), input = document.getElementById("fichier"), nomFichier = document.getElementById("dropzone-file");
+  function montrer() { if (input.files.length) { nomFichier.textContent = input.files[0].name; nomFichier.hidden = false; } }
+  input.addEventListener("change", montrer);
+  ["dragenter", "dragover"].forEach(function (ev) { zone.addEventListener(ev, function (e) { e.preventDefault(); zone.classList.add("is-over"); }); });
+  ["dragleave", "drop"].forEach(function (ev) { zone.addEventListener(ev, function (e) { e.preventDefault(); zone.classList.remove("is-over"); }); });
+  zone.addEventListener("drop", function (e) { if (e.dataTransfer.files.length) { input.files = e.dataTransfer.files; montrer(); } });
+  document.getElementById("formulaire").addEventListener("submit", function () { var b = document.getElementById("bouton"); b.disabled = true; b.textContent = "Analyse en cours…"; });
+
+  var donnees = document.getElementById("donnees-passages");
+  if (!donnees) return;
+  var passages = JSON.parse(donnees.textContent), parId = {};
+  passages.forEach(function (p) { parId[p.id] = p; });
+  var detail = document.getElementById("detail"), modele = document.getElementById("modele-detail");
+
+  function afficher(id, defiler) {
+    var p = parId[id]; if (!p) return;
+    document.querySelectorAll("#texte-annote mark.active").forEach(function (m) { m.classList.remove("active"); });
+    var marques = document.querySelectorAll('#texte-annote mark[data-passage="' + id + '"]');
+    marques.forEach(function (m) { m.classList.add("active"); });
+    if (defiler && marques.length) marques[0].scrollIntoView({ behavior: "smooth", block: "center" });
+    var n = modele.content.cloneNode(true);
+    n.querySelector(".pastille").className = "pastille " + p.couleur;
+    n.querySelector(".cat").textContent = p.categorie;
+    n.querySelector(".meta").textContent = p.methode_detail + " Confiance " + p.confiance + ". Source : " + p.source + ".";
+    n.querySelector(".passage").textContent = p.texte;
+    if (p.source_extrait) { n.querySelector(".source-extrait").textContent = p.source_extrait; }
+    else { n.querySelector(".source-extrait").remove(); n.querySelector(".source-etiquette").remove(); }
+    n.querySelector(".explication").textContent = p.explication;
+    n.querySelector(".conseil span").textContent = p.conseil;
+    var idx = passages.findIndex(function (q) { return q.id === id; });
+    n.querySelector(".index").textContent = "passage " + (idx + 1) + " / " + passages.length;
+    n.querySelectorAll("nav button").forEach(function (b) {
+      b.addEventListener("click", function () { afficher(passages[(idx + parseInt(b.dataset.dir, 10) + passages.length) % passages.length].id, true); });
+    });
+    detail.innerHTML = ""; detail.className = "carte detail " + p.couleur; detail.appendChild(n);
+    if (window.innerWidth < 960) detail.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+  document.getElementById("texte-annote").addEventListener("click", function (e) {
+    var m = e.target.closest("mark[data-passage]"); if (m) afficher(parseInt(m.dataset.passage, 10), false);
+  });
+  document.getElementById("texte-annote").addEventListener("keydown", function (e) {
+    if ((e.key === "Enter" || e.key === " ") && e.target.matches("mark[data-passage]")) { e.preventDefault(); afficher(parseInt(e.target.dataset.passage, 10), false); }
+  });
+  document.querySelectorAll(".voir").forEach(function (b) { b.addEventListener("click", function () { afficher(parseInt(b.dataset.passage, 10), true); }); });
+  document.querySelectorAll("#legende button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var presse = b.getAttribute("aria-pressed") === "true";
+      b.setAttribute("aria-pressed", presse ? "false" : "true");
+      document.body.classList.toggle("cache-" + b.dataset.couleur, presse);
+    });
+  });
+  document.getElementById("resultat").scrollIntoView({ block: "start" });
+})();
+</script>
+{% endblock %}

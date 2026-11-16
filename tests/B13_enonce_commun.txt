@@ -1,0 +1,7 @@
+Devoir d'éthique de la recherche : les cartes d'activation de classe
+
+Sujet du devoir : Présentez le principe des cartes d'activation de classe (CAM) pour expliquer les décisions d'un réseau de neurones convolutif, puis discutez leurs limites à partir des quatre articles distribués en cours. Les emprunts textuels seront mis entre guillemets et suivis d'un appel de référence ; toute source utilisée figurera dans la bibliographie.
+
+Le principe tient en trois étapes. On prend d'abord les cartes de caractéristiques produites par la dernière couche de convolution : chacune réagit à un motif particulier, à un endroit particulier de l'image. On les combine ensuite avec les poids que la couche de classification attribue à la classe choisie : les motifs qui plaident pour cette classe sont amplifiés, les autres atténués. On agrandit enfin la carte obtenue à la taille de l'image et on la superpose à la photo : les zones chaudes sont celles qui ont pesé dans la décision.
+
+La principale limite, à mes yeux, est que cette carte ne répond qu'à une question : où le modèle a-t-il regardé pour la classe choisie ? Elle ne dit pas si la même zone aurait servi pour une autre classe, ni ce qui distingue deux classes proches. Les articles les plus récents cherchent précisément à poser au modèle une question plus fine.
